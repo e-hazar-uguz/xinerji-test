@@ -14,4 +14,8 @@ export class ProductService {
     return this.http.get<any>(this.apiUrl);
   }
 
+  getAllProducts(skip: number, limit: number): Observable<ProductsResponse> {
+    return this.http.get<ProductsResponse>(`${this.apiUrl}?skip=${skip}&limit=${limit}`);
+  }
+
 }

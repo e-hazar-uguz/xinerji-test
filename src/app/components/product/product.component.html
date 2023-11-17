@@ -1,7 +1,32 @@
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-md-3" *ngFor="let product of products">
-      <app-product-card [product]="product"></app-product-card>
-    </div>
+ <h1 class="mt-2" style="text-align: center;">Autocomplete</h1>
+  <div class="mt-5" style="text-align: center;">
+      <h5>Enter Search Value </h5>
+      
+      <input type="text" [(ngModel)]="searchText" (input)="onSearchTextChange()" required #searchInput="ngModel">
+   
+      <div *ngIf="searchInput.invalid && (searchInput.dirty || searchInput.touched ||!searchText)">
+          <p class="error-message"  style="color: red;">This field is required.</p>
+      </div>
+      <button *ngIf="selectedProduct" class="btn mt-2 btn-dark mx-4 mb-3" (click)="clearSelection()">Clear Selection</button>
+
+      <div class="row" *ngIf="products.length > 0">
+
+          <div class="card mt-2 mx-2" style="width: 350px" *ngFor="let product of products"
+              (click)="onProductSelect(product)">
+              <img src="{{product.thumbnail}}" class="card-img-top" alt="">
+              <div class="card-body">
+                  <h2 class="card-title" style="text-align: center;" class="mt-1">{{ product.title }}</h2>
+                  <div class="card-text">
+                      <p>{{ product.description }}</p>
+                      <strong>{{ product.price | currency:'USD':'symbol' }}</strong>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <div *ngIf="selectedProduct">
+          <app-product-card [product]="selectedProduct"></app-product-card>
+      </div>
+ 
   </div>
-</div>

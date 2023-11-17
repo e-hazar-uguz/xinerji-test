@@ -1,4 +1,4 @@
-<div class="container mt-3">
+<!-- <div class="container mt-3">
     <div class=" card mt-2">
         <img class="card-img-top" [src]="product?.thumbnail" alt="Product Thumbnail">
         <div class="card-body">
@@ -102,4 +102,76 @@ z-index:99999;">
             </div>
         </div>
     </div>
-</div>
+</div> -->
+
+
+<div class="container mt-3">
+    <div class=" card mt-2">
+        <div class="form-group">
+            <h3 style="text-align: center;" class="mb-3">{{product.title}}</h3>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label><strong>Brand :</strong></label>
+                        </div>
+                        <div class="col-md-6"> {{product.brand}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label><strong>Category : </strong></label>
+                        </div>
+                        <div class="col-md-6">{{product.category}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label><strong>Price :</strong></label>
+                        </div>
+                        <div class="col-md-6"> {{product.price | currency:'USD':'symbol'}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label><strong>Rating : </strong></label>
+                        </div>
+                        <div class="col-md-6">{{product.rating}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label><strong>Stock : </strong></label>
+                        </div>
+                        <div class="col-md-6">{{product.stock}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label><strong>Discount Percentage : </strong></label>
+                        </div>
+                        <div class="col-md-6">%{{product.discountPercentage}}</div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <img [src]="product.thumbnail" alt="" class='img-fluid mt-1' />
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row mt-2 mb-2">
+                        <strong>{{product.description}}</strong>
+                    </div>
+
+                </div>
+                <hr>
+                <div class="row mt-3">
+                    <h5 class="mt-4" style="text-align: center; font-style: italic;">Other Product Images</h5>
+                    <div class="col-md-4" *ngFor="let image of product.images">
+                        <div class="card">
+                            <img [src]="image" alt="" class='img-fluid mt-1' />
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
